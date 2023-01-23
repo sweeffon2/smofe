@@ -1,0 +1,54 @@
+<div class="row" >
+  <div #generalInformation
+    class="col-md-6 example-element-diagram"
+    (click)="showUnshowAttendence()"
+  >
+    <div class="example-element-position">{{ employee?.badgenumber }}</div>
+    <div class="example-element-symbol">{{ employee?.title }}</div>
+    <div class="example-element-name">{{ employee?.name }}</div>
+  </div>
+  <div  *ngIf="showAttendence" class="md-col-6 example-element-description">
+    <table>
+  
+      <tr> <th>Présence</th> <th>{{_synthese.presencees.length}} / {{_synthese.ouvrable.length}} jours</th> 
+        <th></th> </tr>    
+      <tr> <td>Présence partielle</td> <td>{{_synthese.retards.length}} jours</td> 
+        <td>
+          <ul>
+          <li *ngFor="let item of _synthese.retards">
+            {{ getInfo (item) }}
+$         </li>
+        </ul>
+        </td> </tr>    
+      <tr> <td>Absence</td> <td>{{_synthese.ouvrable.length - _synthese.retards.length - _synthese.presencees.length}} jours</td> 
+        <td></td> 
+      </tr>
+        
+    </table>    
+  </div>
+</div>
+<div class="row">
+  
+    <mat-form-field appearance="fill" class="col-md-4">
+      <mat-label>Choisir les dates</mat-label>
+      <mat-date-range-input [formGroup]="range" [rangePicker]="picker">
+        <input matStartDate formControlName="start" placeholder="Date debut">
+        <input matEndDate formControlName="end" placeholder="Date fin">
+      </mat-date-range-input>
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-date-range-picker #picker></mat-date-range-picker>    
+      <mat-error *ngIf="range.controls.start.hasError('matStartDateInvalid')">Invalid start date</mat-error>
+      <mat-error *ngIf="range.controls.end.hasError('matEndDateInvalid')">Invalid end date</mat-error>
+    </mat-form-field>
+    
+  <div class="col-md-8">
+    <button class="col-md-3" mat-raised-button color="primary" (click)="moisComptable()">Mois comptable</button>
+    <button class="col-md-3" mat-raised-button color="accent" (click)="mois(1)">Un (01) mois</button>
+    <button class="col-md-3" mat-raised-button color="warn" (click)="mois(2)">Deux (02) mois</button>
+    <button class="col-md-3" mat-raised-button (click)="mois(3)">Trois (03) mois</button>
+</div>
+</div>
+<div *ngIf="showAttendence" class="row">
+    <canvas class="col-md-12" #myCanvas></canvas>
+</div>
+

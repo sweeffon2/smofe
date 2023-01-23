@@ -1,0 +1,40 @@
+.example-element-detail {
+  overflow: hidden;
+  display: flex;
+}
+
+.example-element-diagram {
+  min-width: 80px;
+  border: 2px solid black;
+  padding: 8px;
+  font-weight: lighter;
+  margin: 8px 0;
+  /* height: 104px; */
+}
+
+.example-element-symbol {
+  font-weight: bold;
+  font-size: 28px;
+  line-height: normal;
+}
+
+.example-element-description {
+  padding: 16px;
+}
+
+.example-element-description-attribution {
+  opacity: 0.5;
+}
+
+.female {
+  color: rgb(247, 9, 215);  
+}
+
+.male {
+  color: rgb(28, 3, 99);  
+}
+
+.example-button-row {
+  display: table-cell;
+  max-width: 600px;
+}

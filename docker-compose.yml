@@ -1,0 +1,35 @@
+version: '3.7'
+
+services:
+######################################################################"
+#########                OUR APPLICATIONS               ##############"
+  backend:
+    image: smofeit/backend
+    build:
+      context: backend
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+
+  # frontendnode:
+  #   image: smofeit/frontend-mapper
+  #   build:
+  #     context: backend-mapper
+  #     dockerfile: Dockerfile
+  #   ports:
+  #     - 8000:8080
+
+
+  frontend:
+    image: smofeit/frontend
+    build:
+      context: frontend
+      dockerfile: Dockerfile
+    # environment:
+    #   - BACKEND_SERVER=localhost
+    ports:
+      - 80:80
+
+
+######################################################################"
+######################################################################"

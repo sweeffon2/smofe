@@ -1,0 +1,2 @@
+registry=https://nexus.dse.mdn/repository/npm-proxy
+cafile=configs/ca.cert
